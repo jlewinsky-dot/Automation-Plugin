@@ -1,0 +1,4072 @@
+.quote-popup {
+    width: 100%;
+    max-width: 760px;
+}
+.quote-popup-title {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.quote-popup-iframe-wrapper {
+    max-height: calc(100vh - 240px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding-right: 4px;
+}
+@media (max-width:860px){
+    .quote-popup {
+        max-width: 92vw;
+    }
+    .quote-popup-iframe-wrapper {
+        max-height: calc(100vh - 180px);
+    }
+}
+
+.quote-popup-footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 16px 0 0;
+    margin-top: 24px;
+    box-shadow: 0 -6px 12px -8px rgba(0,0,0,.12);
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+}
+.quote-popup-footer .gform_footer, .quote-popup-footer .gform_page_footer {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.custom-page .custom-page {
+    align-items: center;
+    justify-content: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+:root {
+    --base-color: #ff6c06;
+}
+
+.custom-page html, body {
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+/* Post-Hero Floating Background Wrapper */
+.custom-page .post-hero-bg {
+    position: relative;
+    isolation: isolate; /* ensure pseudo stacking context */
+}
+
+/* Reserve vertical space in hero so Gravity Forms error messages don't cause sudden layout jumps
+    and prevent them from being obscured by fixed header. Tuned per breakpoint. */
+.custom-page .home-new {
+    min-height: 760px;
+    position: relative;
+}
+@media (max-width: 880px) { .custom-page .home-new { min-height: 680px; } }
+
+@media (max-width: 640px) { .custom-page .home-new { min-height: 640px; } }
+
+/* When Gravity Forms validation errors expand (hero form), boost min-height so submit button isn't pushed beneath fold */
+.custom-page .home-new.gform-errors-present {
+    min-height: 900px;
+}
+@media (max-width: 880px){ .custom-page .home-new.gform-errors-present { min-height: 820px; } }
+
+@media (max-width: 640px){ .custom-page .home-new.gform-errors-present { min-height: 780px; } }
+
+/* Allow internal scrolling if still overflows (safety) */
+.custom-page .home-new.gform-errors-present {
+    overflow: visible;
+}
+
+/* Mobile: hide Testimonials nav item (section hidden on mobile) */
+@media (max-width: 880px) {
+    .custom-page .nav-list li a[href*="testimonial" i],
+    .custom-page .nav-list li a[href="#testimonials"],
+    .custom-page .nav-list li a[href="#testimonial"],
+    .custom-page .nav-list li a[href*="#testimonial" i] {
+        display: none !important;
+    }
+}
+
+/* Gravity Forms: ensure validation summary stays visible (account for fixed header offset) */
+.custom-page .gform_wrapper {
+    scroll-margin-top: 110px;
+}
+.custom-page .home-new .gform_wrapper {
+    padding-top: 4px;
+}
+
+.custom-page .post-hero-bg::before {
+    content: "";
+    position: fixed; /* keep it stationary relative to viewport for subtle parallax */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.luxurybathroomtrailer.com/wp-content/uploads/2025/08/ChatGPT-Image-Aug-19-2025-at-09_25_43-PM.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.08; /* 15% opacity */
+    pointer-events: none; /* allow interaction with content */
+    z-index: -1;
+    animation: floatBg 18s ease-in-out infinite;
+    will-change: transform;
+    overflow: hidden;
+}
+
+@keyframes floatBg {
+    0% {
+        transform: translate3d(0,0,0) scale(1);
+    }
+    25% {
+        transform: translate3d(1.2rem, -0.8rem,0) scale(1.02);
+    }
+    50% {
+        transform: translate3d(0.4rem, 0.8rem,0) scale(1.015);
+    }
+    75% {
+        transform: translate3d(-1rem, -0.6rem,0) scale(1.02);
+    }
+    100% {
+        transform: translate3d(0,0,0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .custom-page .post-hero-bg::before {
+        animation: none;
+    }
+}
+
+/* === Partners Section Centering Fix === */
+.custom-page .partners-text-div {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    padding: 0 20px;
+}
+.custom-page .partners-h4 {
+    margin: 0;
+    font-size: 1.9rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+.custom-page .partners {
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+}
+.custom-page .partners .service-areas-grid {
+    justify-content: center;
+    margin: 0 auto;
+}
+@media (max-width:700px){
+    .custom-page .partners-h4 {
+        font-size: 1.55rem;
+    }
+}
+
+/* Start of Sections Styling in Order:
+    1.) Home Styles
+    2.) Section 2 Styles
+    3.) Section 3 Styles
+    4.) Section 4 Styles
+    5.) Testimonials Section
+    6.) Section 5 Styles
+    7.) Section 6 Styles
+    8.) Section 7 Styles
+    9.) Partners Container
+    10.) Footer Styles
+    */
+
+.custom-page .home-new {
+    width: 100%;
+    position: relative;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+/* widened to allow larger form while keeping image */
+    max-width: 1400px;
+/* slightly reduced gap so very large widths don't feel too sparse */
+    gap: 220px;
+    align-self: center;
+    box-sizing: border-box;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 220px;
+    padding-bottom: 140px;
+}
+
+@media screen and (max-width: 940px) {
+    .custom-page .home-new {
+        flex-direction: column;
+        padding-top: 140px;
+        padding-bottom: 80px;
+        gap: 60px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .custom-page .home-new-image {
+        width: 340px;
+    }
+    .custom-page .home-new-content-2 {
+        padding: 0;
+    }
+    .custom-page .iframe-simple-wrapper-2 {
+        padding-left: 0;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        gap: 20px;
+    }
+}
+
+.custom-page  .home-new-content-1 {
+    display: flex;
+    flex-basis: 40%;
+    flex-direction: column;
+    height: 630px;
+    width: 650px;
+}
+
+.custom-page  .home-new-image {
+    border-radius: 5px;
+    height: 650px;
+    width: 700px;
+    float: left;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 25px 60px -18px rgba(0,0,0,0.35), 0 12px 28px -8px rgba(0,0,0,0.22);
+    z-index: 999;
+}
+
+.custom-page  .home-new-content-2 {
+    display: flex;
+    flex-basis: 40%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 780px;
+    width: 650px;
+    gap: 15px;
+    overflow: visible;
+}
+
+.custom-page .home-new-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.18;
+    margin: 0 0 2px 0; /* slight tighten below */
+    max-width: 600px; /* prevent overly wide line-length */
+    padding-left: 5px; /* Desktop left padding */
+}
+
+@media screen and (max-width: 1540px) {
+    .custom-page .home-new {
+        gap: 120px;
+        padding-top: 140px;
+        padding-bottom: 100px;
+    }
+    .custom-page .home-new-heading {
+        font-size: 32px;
+    }
+    .custom-page .home-new-content-2 {
+        flex-basis: 50%;
+    }
+}
+
+.home-phone-new {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+
+}
+
+.h3-home-new {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 5px; /* Desktop left padding */
+    line-height: 1.3;
+}
+
+.h2-2-home-new {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(16px, 1vw, 19px);
+    font-weight: 500;
+    color: #000000;
+    margin: 2px 0 0 0;
+    padding-top: 10px;
+    padding-left: 5px; /* Desktop left padding */
+    line-height: 1.25;
+}
+
+.custom-page .iframe-simple-wrapper-2 {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0; /* remove top space above iframe */
+    background: transparent; /* remove white bleed */
+    border-radius: 0; /* let iframe border define shape */
+    box-shadow: none; /* remove ambient white glow */
+    overflow: visible;
+    z-index: 999;
+    gap: 20px;
+}
+
+/* Desktop form alignment - left align on larger screens */
+@media screen and (min-width: 1025px) {
+    .custom-page .iframe-simple-wrapper-2 {
+        margin: 0; /* Remove auto centering */
+        align-items: flex-start; /* Align to left */
+    }
+}
+
+.custom-page .iframe-simple-wrapper-2 .form-iframe {
+    width: 100%;
+    min-height: 420px; /* keep height but strip visuals */
+    max-height: 640px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    display: block;
+    padding: 0;
+}
+
+/* Narrower form iframe (both hero and secondary) */
+.custom-page .iframe-simple-wrapper-2 .form-iframe,
+.custom-page .iframe-simple-wrapper .form-iframe {
+    width: 100%;
+    max-width: 700px;
+    margin: 0;
+    display: block;
+
+}
+
+@media screen and (max-width: 1340px) {
+    .custom-page .home-new {
+        flex-direction: column-reverse;
+    }
+    .custom-page .home-new-heading {
+        font-size: 32px;
+        text-align: center;
+    }
+    .custom-page .home-new-content-2 {
+        align-items: center;
+    }
+    .custom-page .h3-home-new {
+        text-align: center;
+    }
+    .custom-page .iframe-simple-wrapper-2 {
+        justify-content: center;
+        align-items: center;
+        padding-left: 0%;
+    }
+    .custom-page .home-new-content-1 {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .custom-page .iframe-simple-wrapper-2 {
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+    .custom-page .home-new-image {
+        width: 500px;
+        height: 450px;
+    }
+}
+
+@media (max-width: 640px) {
+    .custom-page .iframe-simple-wrapper-2 .form-iframe,
+    .custom-page .iframe-simple-wrapper .form-iframe {
+        width: 100%;/* full width on small devices for readability */
+    }
+}
+
+@media (max-width: 640px) {
+    .custom-page .iframe-simple-wrapper-2 {
+        padding-left: 0%;
+        padding-right: 14px; /* Added slight right padding for mobile to prevent edge collision */
+    }
+    .custom-page .home-new {
+        gap: 50px;
+    }
+}
+
+/* ==== Centered Second Section Overrides ==== */
+
+.custom-page .section-2-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.custom-page .section-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;   /* center columns horizontally */
+    align-items: flex-start;    /* natural top alignment */
+    margin: 0 auto;
+    box-sizing: border-box;
+    align-self: center;
+    max-width: 1200px;         /* allow a bit more width for bigger gap */
+}
+
+.custom-page .section-2-item-1,
+.custom-page .section-2-item-2 {
+    flex: 1 1 420px;          /* responsive column basis */
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* center content horizontally */
+    text-align: center;       /* center text */
+}
+
+.button-wrapper {
+    display: flex;
+    position: relative;
+    padding-top: 30px;
+}
+
+/* Wider screens: force side-by-side and prevent premature wrapping */
+@media (min-width: 1300px) {
+    .custom-page .section-2 {
+        flex-wrap: nowrap;
+    }
+    .custom-page .section-2-item-1 {
+        flex: 0 1 52%;
+        align-items: center;
+        text-align: center;
+    }
+    .custom-page .section-2-item-2 {
+        flex: 0 1 48%;
+        align-items: center;
+    }
+    .custom-page .section-2-item-2 img.section-2-img {
+        margin: 0 auto;
+    }
+}
+
+/* On very large desktops slightly widen the layout for balance */
+@media (min-width: 1600px) {
+    .custom-page .home-new {
+        max-width: 1600px;
+    }
+    .custom-page .iframe-simple-wrapper-2 {
+        max-width: 820px;
+    }
+}
+
+/* === New Fixed Header / Navigation === */
+.custom-page .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 100px; /* fixed height so it stays constant */
+    background-color: rgb(247, 247, 247);
+    box-shadow: 0 4px 6px -2px rgba(0,0,0,0.10), 0 1px 0 rgba(0,0,0,0.04);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box; /* ensure padding (if any) doesn't alter height */
+    transition: box-shadow .35s ease;
+}
+.custom-page .site-header.scrolled {
+    box-shadow: 0 4px 10px -2px rgba(0,0,0,0.20), 0 1px 0 rgba(0,0,0,0.05);
+}
+.custom-page .site-header .header-inner {
+    max-width: 1620px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* desktop: logo left, nav grows */
+}
+.custom-page .brand-logo {
+    height: 100%;
+    max-height: 100px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Responsive logo sizing - gradually reduce as viewport narrows */
+@media (max-width: 880px) {
+    .custom-page .brand-logo {
+        max-height: 85px;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-page .brand-logo {
+        max-height: 75px;
+    }
+}
+
+@media (max-width: 600px) {
+    .custom-page .brand-logo {
+        max-height: 65px;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-page .brand-logo {
+        max-height: 55px;
+    }
+}
+
+.custom-page .primary-nav {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+.custom-page .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.custom-page .nav-item a {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #111;
+    position: relative;
+    padding: 6px 4px;
+    display: inline-block;
+}
+.custom-page .nav-item.nav-cta a.nav-quote-btn {
+    background: var(--base-color);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    line-height: 1.1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+    .custom-page .nav-item.nav-cta a.nav-quote-btn:hover,
+.custom-page .nav-item.nav-cta a.nav-quote-btn:focus-visible {
+    background: color-mix(in srgb, var(--base-color) 85%, black 15%); /* slightly deeper shade of base color */
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px -4px rgba(0,0,0,0.25);
+}
+.custom-page .nav-item.nav-cta a.nav-quote-btn::after {
+    display: none;
+}
+
+/* ═══ Button Color Preservation Rules ═══ */
+/* Prevent browser default link colors from affecting buttons */
+.custom-page .nav-item.nav-cta a.nav-quote-btn,
+.custom-page .button-4,
+.custom-page .button-home-1,
+.custom-page .button-home-2,
+.custom-page .button-menu,
+.custom-page .button-3 {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+    .custom-page .nav-item.nav-cta a.nav-quote-btn:hover,
+    .custom-page .nav-item.nav-cta a.nav-quote-btn:focus,
+    .custom-page .nav-item.nav-cta a.nav-quote-btn:visited,
+    .custom-page .nav-item.nav-cta a.nav-quote-btn:active,
+    .custom-page .button-4:hover,
+    .custom-page .button-4:focus,
+    .custom-page .button-4:visited,
+    .custom-page .button-4:active,
+    .custom-page .button-home-1:hover,
+    .custom-page .button-home-1:focus,
+    .custom-page .button-home-1:visited,
+    .custom-page .button-home-1:active,
+    .custom-page .button-home-2:hover,
+    .custom-page .button-home-2:focus,
+    .custom-page .button-home-2:visited,
+    .custom-page .button-home-2:active,
+    .custom-page .button-menu:hover,
+    .custom-page .button-menu:focus,
+    .custom-page .button-menu:visited,
+    .custom-page .button-menu:active,
+    .custom-page .button-3:hover,
+    .custom-page .button-3:focus,
+    .custom-page .button-3:visited,
+.custom-page .button-3:active {
+    color: white !important;
+}
+@media (max-width:880px){
+    .custom-page .nav-item.nav-cta {
+        width: 100%;
+    }
+    .custom-page .nav-item.nav-cta a.nav-quote-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+        /* Mobile header spacing: push toggle to far right */
+    .custom-page .site-header .header-inner {
+        justify-content: flex-start;
+    }
+    .custom-page .site-header .brand {
+        margin-right: auto;
+    }
+    .custom-page .nav-toggle {
+        margin-left: auto;
+    }
+}
+
+.custom-page .nav-item a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--base-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease;
+}
+.custom-page .nav-item a:hover::after, .custom-page .nav-item a:focus-visible::after {
+    transform: scaleX(1);
+}
+.custom-page .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px 6px;
+    border-radius: 6px;
+}
+.custom-page .nav-toggle:focus-visible {
+    outline: 2px solid var(--base-color);
+    outline-offset: 2px;
+}
+.custom-page .nav-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #111;
+    margin: 5px 0;
+    transition: all .4s ease;
+    border-radius: 2px;
+}
+.custom-page .nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.custom-page .nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+}
+.custom-page .nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Push page content below fixed header (match 100px fixed header) */
+.custom-page .home-div {
+    padding-top: 100px;
+}
+@media (max-width: 880px) {
+    /* Slide-out panel aligned directly below full 100px header */
+    .custom-page .primary-nav {
+        position: fixed;
+        top: 120px; /* Moved down 20px from 100px */
+        right: 10px; /* Slightly inset from edge */
+        width: 190px; /* Reduced width to not pop out as far */
+        background: #ffffffee;
+        backdrop-filter: blur(12px);
+        box-shadow: -4px 4px 14px rgba(0,0,0,0.12);
+        border-radius: 12px; /* Add rounded corners */
+        transform: translateX(100%);
+        transition: transform .4s ease, opacity .3s ease; /* Added opacity transition */
+        height: auto; /* Compact height instead of full screen */
+        max-height: 330px; /* Limit maximum height */
+        display: flex;
+        opacity: 0; /* Start invisible */
+    }
+    .custom-page .primary-nav.open {
+        transform: translateX(0);
+        opacity: 1; /* Fade in when open */
+    }
+    .custom-page .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 22px 24px;
+        gap: 12px;
+        overflow-y: auto;
+    }
+    .custom-page .nav-item a {
+        width: 100%;
+        font-size: 16px;
+    }
+    .custom-page .nav-toggle {
+        display: inline-block;
+    }
+    /* Improve hamburger close animation */
+    .custom-page .nav-toggle .bar {
+        transition: all .3s ease; /* Faster, smoother transition */
+    }
+    .custom-page .nav-toggle[aria-expanded="false"] .bar:nth-child(1) {
+        transform: translateY(0) rotate(0deg); /* Reset to original position */
+    }
+    .custom-page .nav-toggle[aria-expanded="false"] .bar:nth-child(2) {
+        opacity: 1; /* Make sure middle bar is visible when closed */
+    }
+    .custom-page .nav-toggle[aria-expanded="false"] .bar:nth-child(3) {
+        transform: translateY(0) rotate(0deg); /* Reset to original position */
+    }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    .custom-page .site-header {
+        background-color: rgb(242, 242, 242);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    .custom-page .primary-nav {
+        background-color: rgb(242, 242, 242);
+    }
+}
+
+/* Vertically center nav items in fixed header */
+.custom-page .site-header .nav-list {
+    align-items: center;
+}
+.custom-page .site-header .header-inner {
+    position: relative;
+}
+/* Reset brand & nav layout to default space-between (logo left, nav right) */
+.custom-page .site-header .brand {
+    position: static;
+    transform: none;
+}
+.custom-page .site-header .primary-nav {
+    display: flex;
+}
+.custom-page .site-header .nav-list {
+    justify-content: flex-start;
+}
+.custom-page .site-header .nav-item a {
+    color: #1a1a1a;
+}
+@media (max-width:880px){
+    .custom-page .site-header .primary-nav {
+        justify-content: flex-start;
+    }
+}
+
+.custom-page .site-header .nav-item a {
+    display: inline-flex;
+    align-items: center;
+    height: auto;             /* shrink-wrap text */
+    padding: 22px 14px 18px;  /* top / horiz / bottom (room for underline) */
+    line-height: 1.1;
+    position: relative;       /* ensure ::after anchors to this area */
+}
+/* Move animated underline just below text (not bottom of header) */
+.custom-page .site-header .nav-item a::after {
+    bottom: 8px;
+}
+@media (max-width: 880px) {
+    .custom-page .site-header .nav-item a {
+        padding: 10px 8px;      /* tighter spacing in slide-out */
+    }
+    .custom-page .site-header .nav-item a::after {
+        bottom: 4px;
+    }
+}
+
+/* Start of Home Styles & Menu Styles */
+.custom-page .home-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+    padding: 0;
+    gap: 0;
+    z-index: 5;
+    margin: 0;
+}
+
+.custom-page .header-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 7;
+}
+
+.custom-page .header-item-1 {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 50%;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 90px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    z-index: 5;
+    max-width: 600px;
+    align-items: center;
+}
+
+.custom-page .header-item-1 img {
+    width: 50%;
+}
+
+.custom-page .header-item-2 {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 50%;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 110px;
+    padding: 0;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 5;
+    max-width: 600px;
+}
+
+.custom-page .menu-item {
+    font-family: inherit;
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+    padding-left: 7px;
+    padding-right: 7px;
+    justify-content: center;
+    z-index: 5;
+    margin: 0;
+    font-weight: 550;
+    transition: all;
+}
+
+.custom-page .menu-item:hover {
+    transform: scale(0.9);
+    text-decoration: underline var(--base-color);
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+.custom-page .home-banner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 5;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    padding-top: 35px; /* ensures .header-div doesn’t overlap */
+}
+
+/* Make entire custom page a centered flex column (does not force vertical centering of long pages,
+         but allows pages shorter than viewport to center with helper class if added) */
+.custom-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* ─── Banner Content (now a row flex) ─── */
+.custom-page .home-banner-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+    gap: 32px;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    margin-bottom: 20px;
+}
+
+/* ─── Banner Text (Left Column) ─── */
+.custom-page .banner-text {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
+}
+
+.custom-page .h3-home {
+    font-family: inherit;
+    font-size: 32px;
+    color: black;
+    text-align: center;
+    margin: 0;
+    font-weight: 400;
+}
+
+.custom-page .home-phone {
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 400;
+    color: black;
+    text-align: left;
+    margin: 0;
+    text-decoration: underline;
+}
+/* Mobile hamburger alignment override (append) */
+@media (max-width:880px){
+    .site-header .header-inner {
+        justify-content: space-between;
+        padding-right: 16px;
+    }
+    .site-header .brand {
+        margin-right: 0;
+    }
+    .nav-toggle {
+        margin-left: auto;
+        position: relative;
+        right: 0;
+    }
+}
+
+/* removed extraneous closing brace */
+
+.custom-page .heading-home {
+    font-family: inherit;
+    font-size: 44px;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-page .h2-home {
+    font-family: inherit;
+    font-size: 32px;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-page .h2-2-home {
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    padding-bottom: 5px;
+    margin: 0;
+}
+
+.custom-page .two-buttons-home {
+    margin-top: 10px;
+}
+
+.custom-page .button-home-1 {
+    background: var(--base-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.custom-page .button-home-1:hover {
+    transform: scale(0.9);
+    border: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+.custom-page .button-menu {
+    background: var(--base-color);
+    border: none;
+    border-radius: 5px;
+    border-width: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 13px;
+    padding-right: 13px;
+    font-size: 15px;
+    color: white;
+    transition: all;
+}
+
+.custom-page .button-menu:hover {
+    transform: scale(0.9);
+    border: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+
+}
+
+.custom-page .iframe-simple-wrapper {
+    width: 48%;
+    padding-top: 35px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.custom-page .iframe-simple-wrapper > h2.h2-home{
+    transform: translateY(16px);
+    margin-bottom: -16px;    }
+
+.custom-page nav {
+    position: sticky;
+    top: 40px;
+    right: 10px;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 8px;
+    margin-top: -38px;
+    align-items: center;
+    transition: background-color 0.5s ease-in;
+    font-family: inherit;
+    font-weight: 200;
+    width: fit-content;
+    float: right;
+    border-radius: 10px;
+}
+
+.custom-page nav .hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+.custom-page nav .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.custom-page .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-page .dropdown .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.custom-page .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 1;
+}
+
+.custom-page .dropdown-content a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    display: block;
+    border-radius: 5px;
+}
+
+.custom-page .dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+.custom-page .dropdown-content a:hover {
+    background-color: var(--base-color);
+    color: white;
+    border-radius: 5px;
+}
+
+/* Generic .scrolled rule previously added vertical padding causing header content to shift.
+       Limit it so it does NOT affect the site header. */
+.custom-page .scrolled:not(.site-header) {
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+/* Explicitly lock header padding in both states */
+.site-header,
+.site-header.scrolled {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.custom-page .two-buttons-home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    top: 0;
+    left: 0;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-page .button-home-1 {
+    background: var(--base-color);
+    border: none;
+    border-radius: 5px;
+    border-width: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    color: white;
+    transition: all;
+}
+
+.custom-page .button-home-1:hover {
+    transform: scale(0.9);
+    border: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+.custom-page .button-home-2 {
+    background: var(--base-color);
+    border: none;
+    border-radius: 5px;
+    border-width: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    color: white;
+    transition: all;
+}
+
+.custom-page .button-home-2:hover {
+    transform: scale(0.9);
+    border: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+/* End of Home Styles
+
+    Start of Section 2 Styles */
+
+.custom-page .section-2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    gap: 10px;
+    align-items: stretch; /* Make children fill the same height */
+}
+
+.custom-page .section-2-item-1 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding: 0 0 0 0;        /* remove inner padding to match request */
+    max-width: 600px;
+    gap: 8px;
+    align-items: flex-start; /* left align items */
+    text-align: left;        /* left align text */
+}
+
+.custom-page .section-2-item-2 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding-bottom: 20px;
+    max-width: 600px;
+    justify-content: flex-end; /* Push content to bottom */
+}
+
+.custom-page .h2-section-2 {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    font-family: inherit;
+    margin: 0;
+}
+
+.custom-page .phone-text-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 0;
+    left: 0;
+    gap: 10px;
+}
+
+.custom-page hr.plain-line {
+    margin: 0;
+    padding: 0;
+    border: none;
+    height: 1.2px;
+    background-color: var(--base-color);
+    width: 90%;
+    display: block;
+}
+
+.custom-page .plain-line-div {
+    display: flex;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
+.custom-page .background-wrapper-2 {
+    display: flex;
+    flex-direction: column;
+    background: transparent; /* remove background */
+    border-radius: 0;         /* reset radius */
+    padding: 0;               /* remove inner padding */
+    gap: 0.75rem;              /* slight spacing between elements */
+    max-width: 600px;
+    box-shadow: none;          /* remove shadow */
+}
+/* Inline quote + phone (Section 2) */
+.custom-page .quote-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin: 4px 0 10px 0;
+}
+.custom-page .quote-inline .quote-text {
+    margin: 0;
+    padding: 0;
+}
+.custom-page .quote-inline .phone-inline {
+    color: var(--base-color);
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
+.custom-page .quote-inline .phone-inline:hover {
+    opacity: 0.8;
+}
+
+.custom-page .h3-section-2 {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+}
+
+.custom-page .p-section-2 {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 300;
+    color: #000000;
+    margin: 0;
+    line-height: 1.5;
+    padding-bottom: 5px;
+    padding-right: 70px;
+}
+
+.custom-page .phone2 {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(95, 95, 95);
+    text-decoration: underline;
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+.custom-page .section-2-img {
+    width: 600px;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    box-shadow: 4px 12px 18px rgba(0, 0, 0, 0.1);
+
+}
+
+/* End of Section 2 Styles
+
+        Start of Section 3 Styles */
+
+.custom-page .button-title-row {
+    display: flex;
+    flex-direction: row;
+    gap: 640px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.custom-page .button-title-row-2 {
+    display: flex;
+    flex-direction: row;
+    gap: 820px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.custom-page .center {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-page .div-image {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding: 0;
+}
+
+.custom-page .div-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    z-index: -1;
+    will-change: transform;
+    padding: 0;
+}
+
+.custom-page .section-3-column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: rgb(242, 242, 242);
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.custom-page .section-3-row {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: stretch;
+    margin: 0;
+    gap: 20px;
+    padding: 20px 0;
+    max-width: 1200px;
+}
+
+.custom-page .section-3-item1,
+.custom-page .section-3-item2,
+.custom-page .section-3-item3 {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin: 0;
+    gap: 15px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.44);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    height: 320px;
+    width: 180px;
+
+}
+
+.custom-page .h2-section-3 {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+    text-align: center;
+}
+
+.custom-page .p-section-3 {
+    font-family: inherit;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0;
+    color: #000000;
+}
+
+/* End of Section 3 Styles
+
+    /* Cards Wheel */
+/* Cards Wheel */
+.custom-page .cards-wheel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+/* Full-width background wrapper for cards wheel */
+.custom-page .cards-wheel-bg {
+    width: 100vw;
+    position: relative;
+    background-color: rgb(242, 242, 242);
+    padding: 10px 0 40px; /* top & bottom spacing */
+}
+
+/* Section Title */
+.custom-page .cards-wheel__title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    font-family: inherit;
+}
+
+/* Container */
+.custom-page .cards-wheel__container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    outline: none;
+    padding-bottom: 10px;
+}
+.custom-page .cards-wheel__container.dragging {
+    cursor: grabbing;
+}
+
+/* Custom scrollbar */
+.custom-page .cards-wheel__container::-webkit-scrollbar {
+    height: 8px;
+}
+.custom-page .cards-wheel__container::-webkit-scrollbar-track {
+    background: rgba(245, 245, 245, 0.587);
+}
+.custom-page .cards-wheel__container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+/* Cards */
+.custom-page .cards-wheel__card {
+    flex: 0 0 48%;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+.custom-page .cards-wheel__card:hover {
+    transform: translateY(-5px);
+}
+
+/* Title section */
+.custom-page .cards-wheel__header {
+    background: #e5e7eb;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #1f2937;
+    font-family: inherit;
+}
+
+/* Image section */
+.custom-page .cards-wheel__image {
+    background: #f3f4f6;
+    position: relative;
+    overflow: hidden;
+}
+.custom-page .cards-wheel__image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+/* scale image slightly when hovered */
+.custom-page .cards-wheel__image.hovered img {
+    transform: scale(1.05);
+}
+
+/* Description section */
+.custom-page .cards-wheel__description {
+    background: #e5e7eb;
+    padding: 1rem;
+    flex: 1;
+}
+.custom-page .cards-wheel__description p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #4b5563;
+    font-family: inherit;
+}
+
+/* Prev/Next buttons */
+.custom-page .scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 2;
+}
+.custom-page .scroll-btn.prev {
+    left: 8px;
+}
+.custom-page .scroll-btn.next {
+    right: 8px;
+}
+
+/* Magnifier Lens */
+.custom-page .magnifier {
+    position: absolute;
+    pointer-events: none;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+/*end of card wheel Styles*/
+
+/*Start of Section 4 Styles */
+
+.custom-page .section-4 {
+/* legacy layout no longer used after refactor */
+    display: none;
+}
+
+.custom-page .section-4-hr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    padding: 0;
+}
+
+.custom-page .section-4-item-1 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 48%;
+    position: relative;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 600px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2%;
+}
+
+.custom-page .section-4-item-2 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 45%;
+    position: relative;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    max-width: 600px;
+    padding-top: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-page .section-4-img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 4px 12px 18px rgba(0, 0, 0, 0.3);
+}
+
+.custom-page .service-areas {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #000000;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.custom-page .p-section-4 {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.custom-page .p-section-4-2 {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.custom-page .h2-section-4 {
+    font-family: inherit;
+    font-size: 40px;
+    line-height: 1.2;
+    color: #333333;
+    text-align: center;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+.custom-page .service-areas-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    width: 100%;
+    gap: 7px;
+    padding-top: 8px;
+}
+
+.custom-page .service-areas-container a {
+    flex: 1 0 auto;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: var(--base-color);
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.custom-page .button-4 {
+    background: var(--base-color);
+    border: none;
+    border-radius: 5px;
+    border-width: 2px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 16px;
+    color: white;
+    transition: all;
+    font-family: 'Inter', sans-serif;
+    width: 150px;
+}
+
+.custom-page .button-4:hover {
+    scale: 0.9;
+    border: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+/* End of Section 4 Styles
+
+    Start of Services Section */
+
+.custom-page .services-section {
+    padding: 4rem 2rem 0 2rem;
+    width: 100%;
+    max-width: 1300px;           /* hard container cap */
+    margin: 0 auto;              /* center the whole section */
+    display: flex;
+    flex-direction: column;
+    align-items: center;         /* center title & grid wrapper */
+    text-align: center;
+    box-sizing: border-box;
+    padding-bottom: 100px;
+}
+/* Full-width background wrapper for services section */
+.custom-page .services-bg {
+    width: 100vw;
+    position: relative;
+    background-color: rgb(242, 242, 242);
+    padding: 10px 0 50px; /* vertical spacing similar to cards wheel */
+}
+
+.custom-page .services-title {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    text-align: center;    margin-bottom: 2rem;
+    color: #333;
+    font-size: 34px;
+    font-weight: 500;
+}
+
+.custom-page .services-grid {
+    display: grid;
+    gap: 1.5rem 1.25rem;
+/* Fixed card width columns that auto-wrap & stay centered */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;              /* centers grid block */
+    justify-content: center;     /* center tracks if extra space */
+    justify-items: center;       /* center box inside cell */
+    align-items: stretch;
+}
+
+@media (max-width: 600px) {
+    .custom-page .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+
+.custom-page .service-box {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;               /* vertical layout inside */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 260px;            /* constrain individual card width for visual center */
+    box-sizing: border-box;
+}
+
+/* Dark box: layered background via pseudo-element */
+.custom-page .service-box--dark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--base-color);
+    opacity: 0.9;   /* stronger opacity to better reflect the base color */
+    border-radius: inherit;
+    z-index: 1;
+}
+
+/* Ensure content is fully opaque and above the layer */
+.custom-page .service-box--dark > * {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+/* Light box: simple translucent background */
+.custom-page .service-box--light {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.custom-page .service-box__title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-family: inherit;
+}
+
+/* Force title text color to remain white (or inherit current) on hover/focus for dark boxes */
+.custom-page .service-box--dark .service-box__title,
+.custom-page .service-box--dark .service-box__title:hover,
+.custom-page .service-box--dark .service-box__title:focus-visible {
+    color: #ffffff !important;
+}
+.custom-page .service-box--dark:hover .service-box__title {
+    color: #ffffff !important;
+}
+
+.custom-page .service-box__desc {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    font-family: inherit;
+    padding-bottom: 10px;
+}
+
+.custom-page .service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* (Consolidated centering above; removed duplicate older centering block) */
+
+/* Tablet (2-per-row) */
+@media (max-width: 992px) {
+    .custom-page .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .custom-page .service-box {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile (1-per-row, smaller padding/text) */
+@media (max-width: 576px) {
+    .custom-page .services-section {
+        padding: 2rem 1rem;
+    }
+    .custom-page .services-title {
+        font-size: 2rem;
+    }
+    .custom-page .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .custom-page .service-box {
+        padding: 1rem;
+    }
+    .custom-page .service-box__title {
+        font-size: 1.1rem;
+    }
+    .custom-page .service-box__desc {
+        font-size: 0.9rem;
+    }
+}
+
+/* End of Services Section
+
+    Start of Testimonials Section */
+
+.custom-page .testimonial-section {
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto; /* outer spacing now handled by wrapper */
+    text-align: center;
+    background: #ffffff6f;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding: 20px 20px;
+    overflow: hidden;
+}
+
+/* Wrapper provides vertical rhythm */
+.custom-page .testimonials-wrapper {
+    padding: 120px 0; /* top & bottom space */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+    box-sizing: border-box;
+}
+@media (max-width: 700px){
+    .custom-page .testimonials-wrapper {
+        padding: 40px 0;
+    }
+    .custom-page .testimonial-section {
+        width: 70%;
+    }
+}
+
+/* Hide entire testimonials section on small screens */
+@media (max-width: 600px){
+    .custom-page .testimonials-wrapper {
+        display: none;
+    }
+    /* Section 5 mobile formatting */
+    .custom-page .section-5 {
+        flex-direction: column; /* stack items vertically */
+        gap: 30px; /* reduce gap between items */
+        padding: 40px 16px; /* add horizontal padding, reduce vertical */
+        align-items: center;
+    }
+    .custom-page .section-5-item-1,
+    .custom-page .section-5-item-2 {
+        max-width: 100%; /* use full width */
+        width: 100%;
+        height: auto; /* remove fixed height */
+        align-items: center; /* center content */
+        text-align: center;
+    }
+    .custom-page .section-5-img {
+        width: 100%; /* responsive width */
+        max-width: 400px; /* max width to prevent oversizing */
+        height: auto; /* maintain aspect ratio */
+    }
+    .custom-page .h2-section-5 {
+        font-size: 24px; /* slightly smaller heading */
+        text-align: center;
+        padding-bottom: 5px;
+    }
+    .custom-page .p-section-5 {
+        font-size: 15px; /* slightly smaller text */
+        text-align: center;
+        line-height: 1.5;
+        margin: 0 auto;
+        max-width: 100%;
+        padding-bottom: 5px; /* prevent overflow */
+    }
+}
+
+.custom-page .testimonial-slide {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-page .testimonial-slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+.custom-page .testimonial-text {
+    color: #000000;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    font-family: inherit;
+    max-width: 900px;
+}
+
+.custom-page .quote-icon {
+    font-size: 3em;
+    color: transparent;
+    margin-bottom: -10px;
+    position: relative; /* enable pseudo fallback positioning */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+/* Fallback when icon font (e.g., Font Awesome) isn't present: draw a quote mark */
+.custom-page .quote-icon::after {
+    content: "“"; /* Unicode left double quotation mark */
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 1em; /* scales with .quote-icon font-size */
+    color: transparent; /* inherits var(--base-color) */
+    display: inline-block;
+    transform: translateY(-0.05em);
+}
+/* If a real icon element exists, hide the fallback to avoid duplicates (modern browsers) */
+.custom-page .quote-icon:has(i)::after {
+    display: none;
+}
+
+.custom-page .quote-icon i,
+.custom-page .quote-icon .fas,
+.custom-page .quote-icon .fa-quote-left {
+    color: transparent !important;
+}
+
+.custom-page .testimonial-author {
+    font-weight: bold;
+    color: var(--base-color);
+    font-size: 1em;
+    margin-top: 15px;
+}
+.custom-page .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--base-color); /* reversed: solid base color */
+    color: #fff; /* icon (stroke) white by default */
+    cursor: pointer;
+    border: 2px solid var(--base-color);
+    border-radius: 10px; /* square with slight rounding */
+    width: 46px; /* smaller */
+    height: 46px; /* smaller */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px -4px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.18);
+    transition: background .3s ease, color .3s ease, transform .3s ease, box-shadow .3s ease;
+    padding: 0;
+    font: inherit;
+}
+.custom-page .arrow:focus-visible {
+    outline: 3px solid rgba(255,255,255,0.65);
+    outline-offset: 2px;
+}
+.custom-page .arrow:hover {
+    background: #fff;
+    color: var(--base-color);
+    transform: translateY(-50%) translateZ(0) scale(1.05);
+    box-shadow: 0 6px 16px -6px rgba(0,0,0,.38), 0 3px 8px -2px rgba(0,0,0,.22);
+}
+.custom-page .arrow:active {
+    transform: translateY(-50%) scale(.94);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.30);
+}
+.custom-page .arrow-svg {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    display: block;
+}
+
+.custom-page .arrow-left {
+    left: 10px;
+}
+
+.custom-page .arrow-right {
+    right: 10px;
+}
+
+/* Robust centering for testimonial arrows (JS also enforces flex, this is CSS fallback) */
+.custom-page .testimonial-section .arrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* End of Testimonials Section
+
+    Start of Section 5 */
+
+.custom-page .section-5 {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 95px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    background-color: rgb(242, 242, 242);
+}
+/* Full-width wrapper for Section 5 */
+.custom-page .section-5-bg {
+    width: 100vw;
+    position: relative;
+    background-color: rgb(242, 242, 242);
+    padding: 50px 0; /* vertical spacing */
+    display: flex;
+    justify-content: center;
+}
+.custom-page .section-5-bg .section-5 {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.custom-page .section-5-item-1 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 45%;
+    position: relative;
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 600px;
+    padding-bottom: 0%;
+    gap: 5px;
+/* Desktop-specific min-height applied via media query; allow natural height here */
+    height: auto;
+    overflow: visible;
+}
+
+.custom-page .section-5-item-2 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 45%;
+    position: relative;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 600px;
+}
+
+.custom-page .section-5-img {
+    height: 500px;
+    width: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 4px 12px 18px rgba(0, 0, 0, 0.3);
+}
+
+.custom-page .p-section-5 {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #000000;
+    text-align: left;
+}
+
+.custom-page .h2-section-5 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #000000;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.custom-page .button-3 {
+    background: var(--base-color);
+    border: none;
+    border-radius: 5px;
+    border-width: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    color: white;
+    transition: all;
+}
+
+.custom-page .button-3:hover {
+    scale: 0.9;
+    border: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+/* === Section 5 responsive layouts === */
+/* Make Section 5 a column layout under 1200px */
+@media (max-width: 1200px) {
+    .custom-page .section-5 {
+        flex-direction: column;
+        gap: 50px;
+        padding: 60px 24px;
+        align-items: center;
+    }
+    .custom-page .section-5-item-1,
+    .custom-page .section-5-item-2 {
+        max-width: 100%;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    /* On narrower screens remove minimum to avoid excessive blank space and let content flow */
+        min-height: unset;
+    }
+    .custom-page .section-5-img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+    .custom-page .h2-section-5 {
+        text-align: center;
+    }
+    .custom-page .p-section-5 {
+        text-align: center;
+    }
+}
+
+/* Reduce partners section padding under 500px */
+@media (max-width: 500px) {
+    .custom-page .partners-text-div {
+        padding: 0 15px;
+        margin: 0 auto 0.5rem;
+    }
+    .custom-page .partners {
+        padding: 0 15px;
+        margin: 0 auto 1.5rem;
+    }
+}
+
+/* Reduce partners section top/bottom padding under 600px */
+@media (max-width: 600px) {
+    .custom-page .partners {
+        padding-bottom: 60px;
+    }
+    .custom-page .partners-text-div {
+        padding-top: 60px;
+        padding-bottom: 15px;
+    }
+}
+
+/* Further reduce partners section top/bottom padding under 400px */
+@media (max-width: 400px) {
+    .custom-page .partners {
+        padding-bottom: 40px;
+    }
+    .custom-page .partners-text-div {
+        padding-top: 40px;
+        padding-bottom: 10px;
+    }
+}
+
+/* === Refactored Service Areas Grid === */
+.custom-page .service-areas-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    padding-top: 90px;
+    padding-left: 0;
+    display: flex;
+    padding-right: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 34px;
+    box-sizing: border-box;
+    align-self: center;
+}
+.custom-page .service-areas-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem; /* match 'Our Products' heading scale */
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    color: #111827;
+}
+.custom-page .service-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+    gap: 18px 20px;
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    margin: 0 auto; /* center the grid block like Partners */
+    justify-content: center;
+    align-self: center; /* center tracks when there is extra space */
+}
+@media (min-width: 1150px){
+    .custom-page .service-areas-grid {
+        grid-template-columns: repeat(4, 1fr); /* enforce 4 columns */
+    }
+}
+
+/* Responsive columns: 3 cols below 1150px, 2 cols below 800px */
+@media (max-width: 1150px){
+    .custom-page .service-areas-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 800px){
+    .custom-page .service-areas-grid {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 12px 12px; /* tighter spacing like partners when narrow */
+        padding-left: 0; padding-right: 0;
+    }
+    /* begin shrinking tiles at two columns to fit viewport like partners */
+    /* Desktop (wide) enforce a comfortable baseline height so layouts stay balanced */
+    @media (min-width: 1201px) {
+    .custom-page .section-5-item-1 {
+        min-height: 500px; /* original baseline height */
+    }
+    }
+    .custom-page .service-area-tile {
+        padding: 16px 14px;
+        font-size: 15px;
+        height: 76px;
+        width: 100%;
+    }
+    /* reduce outer padding to give grid more room */
+    .custom-page .service-areas-section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* Mobile: limit initial Service Areas to 8 and reveal all on View More */
+@media (max-width: 600px){
+    /* If items are direct children of the grid, hide 9+ */
+    .custom-page .service-areas-section .service-areas-grid > .service-area-tile:nth-child(n+9) {
+        display: none;
+    }
+    /* If extra items are wrapped, keep them hidden until expanded */
+    .custom-page .service-areas-section .service-area-extra .service-area-tile {
+        display: none;
+    }
+    /* When expanded (grid gets .open), show all */
+    .custom-page .service-areas-section .service-areas-grid.open > .service-area-tile,
+    .custom-page .service-areas-section .service-areas-grid.open .service-area-extra .service-area-tile {
+        display: inline-flex;
+    }
+}
+
+.custom-page .service-area-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 22px;
+    background: #fff;
+    border: 1px solid #d7dbe0;
+    border-radius: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #222;
+    line-height: 1.25;
+    letter-spacing: .3px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    transition: background .25s, box-shadow .25s, transform .25s;
+    position: relative;
+    min-height: 70px;
+/* enforce uniform height so rows align perfectly */
+    height: 82px;
+    width: 100%; /* make tiles fill their grid cell so sizes are identical */
+    overflow: hidden;
+}
+.custom-page .service-area-tile:hover, .custom-page .service-area-tile:focus-visible {
+    background: var(--base-color);
+    color: #fff;
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,0.28);
+    transform: translateY(-4px);
+}
+.custom-page .service-area-extra[hidden] {
+    display: none !important;
+}
+.custom-page .service-area-extra {
+    display: contents;
+}
+.custom-page .service-areas-toggle {
+    margin-top: 8px;
+    width: auto;
+    min-width: 170px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--base-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    transition: background .25s ease, transform .25s ease;
+}
+/* === Animated reveal for extra service areas === */
+/* Keep display: contents so extra tiles remain part of the SAME grid (prevents layout break on reveal). */
+.custom-page .service-area-extra.animating,
+.custom-page .service-area-extra.revealed {
+    display: contents;
+    width: auto;
+}
+
+/* Layout: we still want children to flow into the parent grid columns; emulate by making the wrapper itself a contents-like grid item span full width */
+
+/* Initial hidden state for animation (when just un-hidden before adding revealed class) */
+.custom-page .service-area-extra.animating .service-area-tile {
+    opacity: 0;
+    transform: translateY(14px) scale(.98);
+}
+
+@keyframes serviceAreasFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(16px) scale(.96);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(2px) scale(1.01);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes serviceAreasFadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    40% {
+        opacity: 0;
+        transform: translateY(8px) scale(.97);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(8px) scale(.97);
+    }
+}
+
+/* Staggered entrance */
+.custom-page .service-area-extra.revealed .service-area-tile {
+    animation: serviceAreasFadeIn .55s cubic-bezier(.4,.6,.3,1) forwards;
+}
+.custom-page .service-area-extra.collapsing .service-area-tile {
+    animation: serviceAreasFadeOut .4s ease forwards;
+}
+
+/* Generate simple stagger (supports up to 24 extra tiles; extend if needed) */
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(1) {
+    animation-delay: .02s;
+}
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(2) {
+    animation-delay: .06s;
+}
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(3) {
+    animation-delay: .10s;
+}
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(4) {
+    animation-delay: .14s;
+}
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(5) {
+    animation-delay: .18s;
+}
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(6) {
+    animation-delay: .22s;
+}
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(7) {
+    animation-delay: .26s;
+}
+.custom-page .service-area-extra.revealed .service-area-tile:nth-child(8) {
+    animation-delay: .30s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(9) {
+    animation-delay: .34s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(10) {
+    animation-delay: .38s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(11) {
+    animation-delay: .42s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(12) {
+    animation-delay: .46s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(13) {
+    animation-delay: .50s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(14) {
+    animation-delay: .54s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(15) {
+    animation-delay: .58s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(16) {
+    animation-delay: .62s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(17) {
+    animation-delay: .66s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(18) {
+    animation-delay: .70s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(19) {
+    animation-delay: .74s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(20) {
+    animation-delay: .78s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(21) {
+    animation-delay: .82s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(22) {
+    animation-delay: .86s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(23) {
+    animation-delay: .90s;
+}
+.service-area-extra.revealed .service-area-tile:nth-child(24) {
+    animation-delay: .94s;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .service-area-extra.revealed .service-area-tile,
+    .service-area-extra.collapsing .service-area-tile {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width:600px){
+        /* Service Areas: stack to one column, keep tile width similar to 2/3-col */
+    .custom-page .service-areas-section .service-areas-grid {
+        grid-template-columns: minmax(140px, 220px);
+        gap: 12px;
+        justify-content: center;
+        margin-left: 0;
+    }
+    /* Hide the extra 8 service area tiles on mobile to show only 8 total */
+    .custom-page .service-area-mobile-extra {
+        display: none !important;
+    }
+    /* Keep tile sizing consistent with <=800px breakpoint */
+    .custom-page .service-area-tile {
+        padding: 16px 14px;
+        font-size: 15px;
+        border-radius: 14px;
+        height: 76px;
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .service-area-tile {
+        transition: none;
+    }
+}
+
+.custom-page .phone2 {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--base-color);
+    text-align: center;
+    padding-top: 15px;
+    text-decoration: underline;
+}
+
+.custom-page .phone2-text {
+    font-family: inherit;
+    font-size: 35px;
+    line-height: 1.6;
+    color: #000000;
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
+}
+
+.custom-page .phone-call-today {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: fit-content;
+}
+
+/* End of Section 5
+
+    Start of Section 6 */
+
+/* Section 6 enclosed in a subtle bordered box */
+.custom-page .section-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 40px 20px;
+}
+
+.custom-page .section-6 h2,
+.custom-page .section-6 h3 {
+    font-family: inherit;
+    font-size: 26px;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+    margin: 0 0 24px;
+    line-height: 1.3;
+}
+
+.custom-page .section-6 h2 {
+    margin-bottom: 32px;
+}
+
+.custom-page .section-6-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.custom-page .p-section-6 {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #000000;
+    text-align: center;
+    margin: 0 0 20px;
+    max-width: 950px;
+}
+
+/* End of Section 6
+
+    Start of Section 7 */
+
+.custom-page .section-7-align {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(242, 242, 242);
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.custom-page .section-7 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 35px;
+    max-width: 1200px;
+
+}
+
+.custom-page * {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* global font enforcement */
+}
+
+.custom-page .collapsible {
+    background-color: #CACACA;
+    color: #000000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .custom-page .collapsible:hover,
+.custom-page .collapsible.active {
+    background-color: var(--base-color);
+    color: #FFFFFF;
+    z-index: 65;
+}
+
+.custom-page .collapsible-container {
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-page .icon {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.custom-page .icon:hover {
+    color: #FFFFFF;
+}
+
+/* Collapsed state: no border */
+.custom-page .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 18px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffffff;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+/* Expanded state: show border */
+.custom-page .collapsible.active + .content {
+    border: none;
+}
+
+.custom-page .h2-section-7 {
+    font-family: inherit;
+    font-size: 40px;
+    color: #000000;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* End of Section 7
+
+    Start of form-text section */
+.custom-page .section-6-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 10px 5px;
+    border-radius: 8px;
+    border: 1px solid var(--base-color);
+    box-shadow: 0 4px 8px var(--base-color)1A;
+    background-color: #ffffff6f;
+}
+
+.custom-page .flex-50 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    flex-basis: 48%;
+    height: fit-content;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 0;
+    max-width: 600px;
+    gap: 5px;
+}
+
+.custom-page .iframe-simple-wrapper-2 {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 20px;
+}
+
+/* End of form-text section
+
+    Start of Partners Section */
+
+.custom-page .partners {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    padding-bottom: 100px;
+}
+
+.custom-page .partners-text-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 20px;
+    padding-top: 100px;
+}
+
+.custom-page .partners-h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 35px;
+    font-weight: 500;
+    margin: 0;
+    color: black;
+}
+
+/* End of Partners Section
+
+    Start of bottom quote form section */
+
+.custom-page .bottom-quote-form {
+    display: flex;
+    height: 700px;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: rgb(242, 242, 242);
+    z-index: 999;
+}
+
+.custom-page .bottom-quote-form-inner {
+    display: flex;
+    height: 500px;
+    width: 1000px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: white;
+    border-radius: 8px;
+    padding-top: 65px;
+}
+
+.custom-page .iframe-simple-wrapper-3 {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0; /* remove top space above iframe */
+    background: transparent; /* remove white bleed */
+    border-radius: 0; /* let iframe border define shape */
+    box-shadow: none; /* remove ambient white glow */
+    overflow: visible;
+    gap: 20px;
+}
+
+.custom-page .iframe-simple-wrapper-3 .form-iframe {
+    width: 100%;
+    min-height: 420px; /* keep height but strip visuals */
+    max-height: 640px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    display: block;
+    padding: 0;
+    gap: 20px;
+}
+
+/* Narrower form iframe (both hero and secondary) */
+.custom-page .iframe-simple-wrapper-3 .form-iframe,
+.custom-page .iframe-simple-wrapper .form-iframe {
+    width: 100%;
+    max-width: 700px;
+    margin: 0;
+    display: block;
+    gap: 20px;
+}
+
+/* End of bottom quote form section
+
+    Start of Footer Styles */
+
+.custom-page .footer {
+    display: flex;
+    flex-wrap: row;
+    width: 100vw;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    border-top: #CED4DA;
+    box-shadow: 0px -10px 10px rgba(66, 66, 66, 0.35);
+    padding-right: 1.5%;
+    height: 120px;
+    z-index: 999;
+}
+
+.custom-page .footer-item-1 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: flex-start;
+    height: 110px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 5;
+    max-width: 600px;
+}
+
+.custom-page .footer-item-2 {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 50%;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    height: 110px;
+}
+
+.custom-page .logo {
+    width: 20%;
+}
+/* 1. Let the wrapper shrink-wrap exactly to its contents */
+.custom-page .logo-text-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.custom-page .fusion-a {
+    display: block;
+    width: auto;
+    padding-top: 0;
+}
+
+.custom-page .fusion {
+    display: block;
+    width: auto;
+    max-width: 120px;
+    height: auto;
+}
+
+.custom-page .powered-by {
+    margin: 0;
+    font-family: sans-serif;
+
+}
+
+/* End of Footer Styles */
+
+/* All Divder Styles in Order */
+
+.custom-page .whitespace {
+    background-color: transparent;
+    border-color: transparent;
+    height: 15px;
+}
+
+.custom-page .whitespace-2 {
+    background-color: transparent;
+    border-color: transparent;
+    height: 45px;
+}
+
+.custom-page .hr4 {
+    border-color: none;
+    border: none;
+    background: linear-gradient(transparent, white);
+    height: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-page .hr5 {
+    border-color: none;
+    border: none;
+    background: linear-gradient( white, transparent);
+    height: 80px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-page .hr6 {
+    border-color: none;
+    background: linear-gradient(transparent, white);
+    border: none;
+    height: 80px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-page .hr7 {
+    height: 15px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+/* End of Divider Styles
+
+    Start of all mobile formatting */
+
+@media screen and (max-width:768px) {
+    .custom-page body {
+        align-items: center;
+        justify-content: center;
+    }
+    .custom-page .home-banner-content {
+        flex-direction: column;
+    }
+    .custom-page .banner-text {
+        width: 100%;
+    }
+    .custom-page .section-2 {
+        flex-direction: column;
+    }
+    .custom-page .h2-home {
+        font-size: 0;
+    }
+    .custom-page .h2-section-2 {
+        text-align: center;
+    }
+    .custom-page .section-2-item-1 {
+        align-items: center;
+    }
+    .custom-page .section-2-item-2 {
+        align-items: center;
+    }
+    .custom-page .phone-text-wrapper {
+        align-items: center;
+    }
+    .custom-page .section-3-column {
+        width: 70%;
+    }
+    .custom-page .p-section-2 {
+        text-align: center;
+    }
+    .custom-page .section-3-row {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .custom-page .section-3-item1 {
+        flex-basis: 90%;
+        max-width: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .custom-page .section-3-item2 {
+        flex-basis: 90%;
+        max-width: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .custom-page .section-3-item3 {
+        flex-basis: 90%;
+        max-width: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .custom-page .section-4 {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 1200px; /* maintain same max-width on mobile */
+        margin: 0 auto; /* ensure centered on smaller screens too */
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .custom-page .section-4-item-1 {
+        flex-basis: 90%;
+        align-items: center;
+        justify-content: center;
+    }
+    .custom-page .section-4-item-2 {
+        flex-basis: 90%;
+        align-items: center;
+        justify-content: center;
+    }
+    .custom-page .section-4-img {
+        width: 90vw;
+    }
+    .custom-page .section-5 {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .custom-page .section-6 {
+        flex-direction: column;
+        width: 95%;
+        align-self: center;
+    }
+    .custom-page .section-7 {
+        width: 95%;
+    }
+    .custom-page .testimonial-section {
+        width: 90%;
+    }
+    .custom-page .h3-top {
+        font-size: 20px;
+    }
+    .custom-page .heading-top {
+        font-size: 30px;
+    }
+    .custom-page .h2-top {
+        font-size: 25px;
+    }
+    .custom-page .phone {
+        font-size: 20px;
+    }
+    .custom-page .banner-content {
+        width: 95%;
+        gap: 13px;
+    }
+    .custom-page .h2-section-2 {
+        font-size: 35px;
+    }
+    .custom-page .h3-section-2 {
+        font-size: 25px;
+    }
+    .custom-page .section-2-img {
+        width: 90vw;
+    }
+    .custom-page .h2-section-3 {
+        font-size: 30px;
+    }
+    .custom-page .h2-section-6 {
+        font-size: 30px;
+    }
+    .custom-page .service-areas-container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .custom-page .section-6-img {
+        width: 80%;
+    }
+    .custom-page .h2-section-4 {
+        font-size: 25px;
+    }
+    .custom-page .phone2-text {
+        font-size: 25px;
+        font-weight: 500;
+    }
+    .custom-page .phone2 {
+        font-size: 25px;
+        font-weight: 500;
+    }
+    .custom-page .h2-section-5 {
+        font-size: 30px;
+    }
+    .custom-page .partners-h4 {
+        font-size: 30px;
+    }
+    .custom-page .h2-section-7 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 868px) {
+    .custom-page nav .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: rgb(167, 167, 167);
+        border-radius: 10px;
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .custom-page nav.active .menu {
+        display: flex;
+    }
+    .custom-page nav .menu-item {
+        padding: 10px 15px;
+        margin: 5px 0;
+        text-decoration: none;
+        font-size: 15px;
+        color: white;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .custom-page nav .menu-item:hover {
+        background-color: rgb(140, 140, 140);
+    }
+    .custom-page nav .button-top {
+        padding: 10px 15px;
+        margin: 5px 0;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .custom-page nav .button-top:hover {
+        scale: 0.9;
+        border: none;
+        transition-timing-function: ease-in-out;
+        transition-duration: 200ms;
+    }
+    .custom-page nav .hamburger {
+        display: block;
+    }
+    .custom-page .dropdown-content {
+        position: relative;
+        top: 0;
+        left: 0;
+        background-color: rgb(167, 167, 167);
+        box-shadow: none;
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .custom-page .dropdown-content a {
+        color: white;
+        padding: 10px 15px;
+        font-size: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .custom-page .dropdown-content a:hover {
+        background-color: rgb(140, 140, 140);
+    }
+}
+
+/* Mobile formatting for Cards Wheel */
+@media only screen and (max-width: 768px) {
+    .custom-page .cards-wheel {
+        padding: 1.5rem 0.5rem;
+    }
+    .custom-page .cards-wheel__title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    .custom-page .cards-wheel__container {
+        gap: 0.75rem;
+        padding-bottom: 8px;
+    }
+    .custom-page .cards-wheel__card {
+        flex: 0 0 70%;
+        border-radius: 12px;
+    }
+    .custom-page .cards-wheel__header {
+        font-size: 1.25rem;
+        padding: 0.75rem;
+    }
+    .custom-page .cards-wheel__image img {
+        height: 250px;
+    }
+    .custom-page .cards-wheel__description {
+        padding: 0.75rem;
+    }
+    .custom-page .cards-wheel__description p {
+        font-size: 0.95rem;
+    }
+    .custom-page .scroll-btn {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .custom-page .cards-wheel {
+        padding: 1rem 0.5rem;
+    }
+    .custom-page .cards-wheel__title {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    .custom-page .cards-wheel__container {
+        gap: 0.5rem;
+    }
+    .custom-page .cards-wheel__card {
+        flex: 0 0 85%;
+    }
+    .custom-page .cards-wheel__header {
+        font-size: 1.1rem;
+        padding: 0.5rem;
+    }
+    .custom-page .cards-wheel__image img {
+        height: 200px;
+    }
+    .custom-page .cards-wheel__description p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    .custom-page .scroll-btn {
+        width: 28px;
+        height: 28px;
+        top: 45%;
+    }
+}
+
+/* Mobile formatting for form-text section */
+@media only screen and (max-width: 768px) {
+    .custom-page .section-6-2 {
+        flex-direction: column;
+        padding: 8px 4px;
+    }
+    .custom-page .flex-50 {
+        flex-basis: 100%;
+        max-width: 100%;
+        padding: 8px;
+        gap: 8px;
+    }
+    .custom-page .iframe-simple-wrapper-2 {
+        padding-top: 28px;
+        width: 95vw;
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .custom-page .section-6-2 {
+        padding: 6px 3px;
+        margin: 20px auto;
+        border-radius: 6px;
+    }
+    .custom-page .flex-50 {
+        padding: 6px;
+        gap: 6px;
+    }
+    .custom-page .iframe-simple-wrapper-2 {
+        padding-top: 24px;
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* make footer a column */
+    .custom-page .footer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+        height: auto;           /* let it grow */
+    }
+        /* row 1: logo centered full-width */
+    .custom-page .footer-item-1 {
+        width: 100%;
+        flex-basis: auto;
+        padding: 10px 0;
+        justify-content: center;
+        align-items: center;
+    }
+        /* row 2: phone + powered-by centered */
+    .custom-page .footer-item-2 {
+        width: 100%;
+        flex-basis: auto;
+        display: flex;
+        flex-direction: row;    /* side by side */
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 10px 0;
+    }
+    /* shrink the main logo so it’s not too huge */
+    .custom-page .footer-item-1 .logo {
+        width: 40%;   /* adjust as needed */
+    }
+    /* and make sure the powered-by logo doesn’t overflow */
+    .custom-page .footer-item-2 .fusion {
+        max-width: 100px;
+    }
+}
+
+.custom-page body::-webkit-scrollbar {
+    width: 11px;
+}
+
+.custom-page body::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+.custom-page body::-webkit-scrollbar-thumb {
+    background-color: var(--base-color);
+    border-radius: 4px;
+}
+
+.custom-page body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--base-color);
+}
+
+@media screen and (max-width: 1300px) {
+    .custom-page .section-3-row{
+        flex-direction: column;
+        align-self: center;
+    }
+    .custom-page .section-3-item1,
+    .custom-page .section-3-item2,
+    .custom-page .section-3-item3 {
+        align-self: center;
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .custom-page .button-title-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 25px;
+        gap: 0px;
+    }
+    .custom-page .section-2 {
+        padding-left: 0;
+        padding-right: 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        gap: 30px;
+    }
+    .custom-page .section-3 {
+        padding-left: 0;
+        padding-right: 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        gap: 30px;
+    }
+    .custom-page .section-3-column {
+        padding-left: 0;
+        padding-right: 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        gap: 30px;
+    }
+    .custom-page .section-2-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100vw;
+    }
+    .custom-page .button-title-row-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 25px;
+        gap: 0px;
+    }
+    .custom-page .h2-section-2 {
+        text-align: left;
+    }
+    .custom-page .p-section-2 {
+        text-align: left;
+    }
+    .custom-page .section-2-item-1 {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .custom-page .phone-text-wrapper {
+        flex-direction: column;
+        gap: 0px;
+        text-align: left;
+        align-items: flex-start;
+    }
+}
+
+/* === Quote Popup (Modal) Styles === */
+/*
+    Renamed from quote-modal-* to quote-popup-* for clarity.
+    Structure:
+        .quote-popup-overlay (flex center overlay, hidden by default until .open)
+            .quote-popup (dialog container)
+                button.quote-popup-close (X button)
+                h2.quote-popup-title
+                .quote-popup-iframe-wrapper > iframe.form-iframe (existing style preserved)
+*/
+
+.custom-page .quote-popup-overlay {
+    position: fixed;
+    inset: 0;
+    display: none; /* shown when .open added */
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 20000;
+    padding: 20px;
+}
+
+/* Global fallback (if markup moved outside .custom-page wrapper) */
+.quote-popup-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 2147480000;
+    padding: 20px;
+}
+.quote-popup-overlay.open {
+    overflow: auto;
+}
+.quote-popup-overlay.open .quote-popup {
+    max-height: calc(100vh - 32px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.quote-popup-overlay.open {
+    display: flex;
+    animation: quoteFadeIn .35s ease;
+}
+.quote-popup {
+    background: #fff;
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    border-radius: 20px;
+    padding: 48px 48px 44px;
+    box-shadow: 0 20px 52px -14px rgba(0,0,0,.36),0 6px 20px -8px rgba(0,0,0,.28);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    animation: quotePopIn .45s cubic-bezier(.25,.85,.35,1.2);
+}
+.quote-popup:focus {
+    outline: none;
+}
+.quote-popup-title {
+    font: 500 34px/1.1 'Inter',sans-serif;
+    margin: 0;
+    text-align: center;
+    letter-spacing: .5px;
+    background: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.quote-popup-iframe-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.quote-popup-iframe-wrapper .form-iframe {
+    max-width: 960px;
+    width: 100%;
+    min-height: 560px;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+.quote-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: rgba(0,0,0,.05);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+    transition: background .25s,transform .25s;
+}
+.quote-popup-close:hover,.quote-popup-close:focus-visible {
+    background: var(--base-color);
+    color: #fff;
+    transform: rotate(90deg);
+}
+@media (max-width:600px){.quote-popup{padding:16px 12px 16px;max-width:99%;}.quote-popup-title{font-size:28px}.quote-popup-close{width:38px;height:38px}}
+
+.custom-page .quote-popup-overlay.open {
+    display: flex;
+    animation: quoteFadeIn 0.35s ease;
+}
+
+.custom-page .quote-popup {
+    background: #fff;
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    border-radius: 20px;
+    padding: 48px 48px 44px;
+    box-shadow: 0 24px 56px -14px rgba(0, 0, 0, 0.38), 0 8px 22px -8px rgba(0, 0, 0, 0.28);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    animation: quotePopIn 0.45s cubic-bezier(.25, .85, .35, 1.2);
+    z-index: 2147483640; /* keep dialog itself above any inner positioned elements */
+}
+
+.custom-page .quote-popup:focus {
+    outline: none;
+}
+
+.custom-page .quote-popup-title {
+    font: 500 34px/1.1 'Inter', sans-serif;
+    margin: 0;
+    text-align: center;
+    letter-spacing: .5px;
+    background: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.custom-page .quote-popup-iframe-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Respect existing iframe styling: only containment */
+.custom-page .quote-popup-iframe-wrapper .form-iframe {
+    max-width: 960px;
+    width: 100%;
+    min-height: 560px;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.custom-page .quote-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+    transition: background .25s, transform .25s;
+}
+
+    .custom-page .quote-popup-close:hover,
+.custom-page .quote-popup-close:focus-visible {
+    background: var(--base-color);
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+@keyframes quotePopIn {
+    0% {
+        transform: translateY(40px) scale(.92);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(-6px) scale(1.01);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes quoteFadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+@media (max-width: 600px) {
+    .custom-page .quote-popup {
+        padding: 16px 12px 16px;
+        max-width: 95%;
+    }
+    .custom-page .quote-popup-title {
+        font-size: 28px;
+    }
+    .custom-page .quote-popup-close {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* === Universal Button Shine Effect (no color change) === */
+.custom-page .nav-item.nav-cta a.nav-quote-btn,
+.custom-page .button-4,
+.custom-page .button-home-1,
+.custom-page .button-home-2,
+.custom-page .button-menu,
+.custom-page .button-3 {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    --shine-color: rgba(255,255,255,0.65);
+    --shine-angle: 115deg;
+    --shine-duration: 1.05s;
+}
+
+@media screen and (max-width: 770px) {
+    .custom-page .home-new {
+        gap: 10px;
+        padding-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .custom-page .home-new {
+        width: 460px;
+    }
+    .custom-page .home-new-content-2 {
+        width: 460px;
+    }
+    .custom-page .home-new-heading {
+        width: 460px;
+    }
+}
+
+/* ==== iPhone overflow fix patch (mobile-only, desktop preserved) ==== */
+
+/* 1) Clamp the root so nothing can create horiz. scroll */
+/* Clamp root only when a .custom-page exists */
+/* Scope horizontal clamp to pages that contain .custom-page */
+    html:has(.custom-page),
+body:has(.custom-page) {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* ---- DESKTOP GUARD: keep original desktop hero layout ---- */
+@media (min-width: 1025px) {
+    .custom-page .home-new {
+        flex-direction: row !important;   /* cancels earlier 1340px column-reverse */
+    }
+}
+
+/* ---- Tablet/Phone layout (<=1024px) ---- */
+@media (max-width: 1024px) {
+    /* Stack hero, center, and remove extra space */
+    .custom-page .home-new,
+    .custom-page .home-new-content,
+    .custom-page .home-new-content-1,
+    .custom-page .home-new-content-2 {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+    .custom-page .home-new {
+        flex-direction: column-reverse !important; /* image below form */
+        align-items: center !important;
+        gap: 16px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        padding-bottom: 16px !important;
+    }
+    /* Remove left padding when in column layout */
+    .custom-page .home-new-heading,
+    .custom-page .h3-home-new,
+    .custom-page .h2-2-home-new {
+        padding-left: 0 !important;
+    }
+    /* Let blocks collapse to content height */
+    .custom-page .home-new-content-1,
+    .custom-page .home-new-content-2 {
+        height: auto !important;
+    }
+    /* Fluid media in hero only on non-desktop */
+    .custom-page .home-new-image {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+    .custom-page .iframe-simple-wrapper-2,
+    .custom-page .iframe-simple-wrapper-3 {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+    .custom-page .form-iframe {
+        width: 100% !important;
+        height: auto;
+    }
+}
+
+/* ---- Small phones (<=600px) ---- */
+@media (max-width: 600px) {
+    .custom-page .home-new-heading {
+        font-size: 26px !important;
+        line-height: 1.25 !important;
+    }
+    .custom-page .home-new-content-1 {
+        padding-bottom: 0 !important;
+    }
+    /* Section 2 mobile centering and responsive adjustments */
+    .custom-page .section-2 {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+    .custom-page .section-2-item-1,
+    .custom-page .section-2-item-2 {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+        width: 100%;
+    }
+    .custom-page .h2-section-2 {
+        text-align: center;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    .custom-page .h3-section-2 {
+        text-align: center;
+        font-size: 18px;
+    }
+    .custom-page .p-section-2 {
+        text-align: center;
+        padding-right: 0;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    .custom-page .phone-text-wrapper {
+        justify-content: center;
+    }
+    .custom-page .plain-line-div {
+        justify-content: center;
+    }
+    .custom-page .hr.plain-line {
+        width: 80%;
+    }
+    .custom-page .section-2-img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin: 0 auto;
+    }
+    .custom-page .background-wrapper-2 {
+        max-width: 100%;
+        align-items: center;
+    }
+    /* Section 5 mobile centering and responsive adjustments */
+    .custom-page .section-5 {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 20px;
+        align-items: center;
+    }
+    .custom-page .section-5-item-1,
+    .custom-page .section-5-item-2 {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        text-align: center;
+    }
+    .custom-page .section-5-img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin: 0 auto;
+    }
+    .custom-page .h2-section-5 {
+        text-align: center;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    .custom-page .p-section-5 {
+        text-align: center;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+/* ---- Very small phones and iPhone (<=440px) ---- */
+@media (max-width: 440px) {
+    .custom-page .home-new-heading {
+        font-size: 22px !important;
+        line-height: 1.2 !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .custom-page .h3-home-new {
+        font-size: 18px !important;
+        line-height: 1.3 !important;
+        padding: 0 10px !important;
+        max-width: 100% !important;
+    }
+    .custom-page .h2-2-home-new {
+        font-size: 15px !important;
+        line-height: 1.25 !important;
+        padding: 0 10px !important;
+        max-width: 100% !important;
+    }
+    .custom-page .home-phone-new {
+        font-size: 18px !important;
+        word-break: break-all !important;
+    }
+    .custom-page .home-new-content-2 {
+        padding: 0 10px !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .custom-page .home-new {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .custom-page .h2-2-home-new {
+        text-align: center;
+    }
+}
+
+/* ---- Small phones (<=420px) - Wider Section 3 items ---- */
+@media (max-width: 420px) {
+    .custom-page .section-3-item1,
+    .custom-page .section-3-item2,
+    .custom-page .section-3-item3 {
+        flex-basis: 95%; /* Wider items */
+        width: 90%; /* Ensure wider width */
+        max-width: 90%; /* Override any smaller max-width */
+        padding-left: 5%; /* Keep 5% left padding */
+        padding-right: 5%; /* Keep 5% right padding */
+        margin-left: 0; /* Remove any margins that might interfere */
+        margin-right: 0;
+    }
+}
+
+/* ---- Off-canvas nav safety (mobile) ---- */
+@media (max-width: 880px) {
+    .custom-page .primary-nav {
+        overflow-x: hidden;
+    }
+}
+
+@media (max-width: 590px) {
+    .custom-page .service-areas-section {
+        padding-right: 5%;
+    }
+}
+
+@media (max-width: 570px) {
+    .custom-page .service-areas-section {
+        padding-right: 7%;
+    }
+}
+
